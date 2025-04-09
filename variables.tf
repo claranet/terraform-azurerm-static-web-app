@@ -7,6 +7,11 @@ variable "resource_group_name" {
 variable "location" {
   description = "Azure region to use."
   type        = string
+
+  validation {
+    condition     = contains(["westus2", "centralus", "eastus2", "westeurope", "eastasia"], var.location)
+    error_message = "Location must be one of the following: westus2, centralus, eastus2, westeurope, eastasia."
+  }
 }
 
 variable "location_short" {
