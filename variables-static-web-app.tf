@@ -17,8 +17,7 @@ variable "sku" {
 variable "app_settings" {
   description = "App settings for the Static Web App."
   type        = map(string)
-  default     = {}
-  nullable    = false
+  default     = null
 }
 
 variable "repository" {
@@ -42,7 +41,7 @@ variable "basic_auth" {
 }
 
 variable "configuration_file_changes_enabled" {
-  description = "Should changes to the configuration file be permitted. "
+  description = "Should changes to the configuration file be permitted."
   type        = bool
   default     = true
 }

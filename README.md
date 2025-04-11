@@ -81,7 +81,7 @@ module "static_web_app" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| app\_settings | App settings for the Static Web App. | `map(string)` | `{}` | no |
+| app\_settings | App settings for the Static Web App. | `map(string)` | `null` | no |
 | basic\_auth | Basic authentication block information. | <pre>object({<br/>    password     = optional(string)<br/>    environments = optional(string)<br/>  })</pre> | `null` | no |
 | client\_name | Client name/account used in naming. | `string` | n/a | yes |
 | configuration\_file\_changes\_enabled | Should changes to the configuration file be permitted. | `bool` | `true` | no |
