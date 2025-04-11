@@ -62,13 +62,13 @@ module "static_web_app" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.2.28 |
-| azurerm | ~> 4.0 |
+| azurerm | ~> 4.15 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| diagnostics | claranet/diagnostic-settings/azurerm | n/a |
+| diagnostics | claranet/diagnostic-settings/azurerm | ~> 8.0 |
 
 ## Resources
 
@@ -81,9 +81,10 @@ module "static_web_app" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| allowed\_cidrs | List of allowed CIDR ranges to access the Azure Static Web Apps resource. | `list(string)` | `[]` | no |
-| allowed\_subnet\_ids | List of allowed subnets IDs to access the Azure Static Web Apps resource. | `list(string)` | `[]` | no |
+| app\_settings | App settings for the Static Web App. | `map(string)` | `null` | no |
+| basic\_auth | Basic authentication block information. | <pre>object({<br/>    password     = optional(string)<br/>    environments = optional(string)<br/>  })</pre> | `null` | no |
 | client\_name | Client name/account used in naming. | `string` | n/a | yes |
+| configuration\_file\_changes\_enabled | Should changes to the configuration file be permitted. | `bool` | `true` | no |
 | custom\_name | Custom Azure Static Web Apps, generated if not set. | `string` | `""` | no |
 | default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be `default` if not set. | `string` | `"default"` | no |
@@ -97,9 +98,11 @@ module "static_web_app" {
 | logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | name\_prefix | Optional prefix for the generated name. | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name. | `string` | `""` | no |
-| network\_bypass | Specify whether traffic is bypassed for 'Logging', 'Metrics', 'AzureServices' or 'None'. | `list(string)` | <pre>[<br/>  "Logging",<br/>  "Metrics",<br/>  "AzureServices"<br/>]</pre> | no |
+| preview\_environments\_enabled | Should preview environments be enabled. | `bool` | `true` | no |
 | public\_network\_access\_enabled | Whether the Azure Static Web Apps is available from public network. | `bool` | `false` | no |
+| repository | Repository block information. | <pre>object({<br/>    branch = string<br/>    token  = string<br/>    url    = string<br/>  })</pre> | `null` | no |
 | resource\_group\_name | Name of the resource group. | `string` | n/a | yes |
+| sku | The SKU of the Static Web App. | `string` | `"Standard"` | no |
 | stack | Project stack name. | `string` | n/a | yes |
 
 ## Outputs
