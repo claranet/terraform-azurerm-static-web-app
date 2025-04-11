@@ -109,6 +109,8 @@ module "static_web_app" {
 
 | Name | Description |
 |------|-------------|
+| api\_key | Azure Static Web Apps API key. |
+| default\_hostname | Azure Static Web Apps default hostname. |
 | id | Azure Static Web Apps ID. |
 | identity\_principal\_id | Azure Static Web Apps system identity principal ID. |
 | module\_diagnostics | Diagnostics settings module outputs. |
