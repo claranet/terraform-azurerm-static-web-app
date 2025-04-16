@@ -1,3 +1,17 @@
+## 8.1.0 (2025-04-16)
+
+### Features
+
+* add Custom Domains binding option eeb0f12
+
+### Bug Fixes
+
+* location condition using full Region name 6cfb9e0
+
+### Documentation
+
+* some outputs 8bb3396
+
 ## 8.0.0 (2025-04-11)
 
 ### Features
