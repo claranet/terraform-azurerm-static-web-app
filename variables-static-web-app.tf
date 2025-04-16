@@ -51,3 +51,18 @@ variable "preview_environments_enabled" {
   type        = bool
   default     = true
 }
+
+variable "custom_domains" {
+  description = "Custom domains block information."
+  type = list(object({
+    domain_name     = string
+    validation_type = optional(string, "cname-delegation")
+  }))
+  default  = []
+  nullable = false
+
+  validation {
+    condition     = alltrue([for domain in var.custom_domains : contains(["cname-delegation", "dns-txt-token"], domain.validation_type)])
+    error_message = "In `var.custom_domains`, validation type must be either 'cname-delegation' or 'dns-txt-token'."
+  }
+}

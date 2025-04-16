@@ -75,6 +75,7 @@ module "static_web_app" {
 | Name | Type |
 |------|------|
 | [azurerm_static_web_app.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/static_web_app) | resource |
+| [azurerm_static_web_app_custom_domain.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/static_web_app_custom_domain) | resource |
 | [azurecaf_name.static_web_app](https://registry.terraform.io/providers/claranet/azurecaf/latest/docs/data-sources/name) | data source |
 
 ## Inputs
@@ -85,6 +86,7 @@ module "static_web_app" {
 | basic\_auth | Basic authentication block information. | <pre>object({<br/>    password     = optional(string)<br/>    environments = optional(string)<br/>  })</pre> | `null` | no |
 | client\_name | Client name/account used in naming. | `string` | n/a | yes |
 | configuration\_file\_changes\_enabled | Should changes to the configuration file be permitted. | `bool` | `true` | no |
+| custom\_domains | Custom domains block information. | <pre>list(object({<br/>    domain_name     = string<br/>    validation_type = optional(string, "cname-delegation")<br/>  }))</pre> | `[]` | no |
 | custom\_name | Custom Azure Static Web Apps, generated if not set. | `string` | `""` | no |
 | default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be `default` if not set. | `string` | `"default"` | no |
@@ -109,11 +111,14 @@ module "static_web_app" {
 
 | Name | Description |
 |------|-------------|
+| api\_key | Azure Static Web Apps API key. |
+| default\_hostname | Azure Static Web Apps default hostname. |
 | id | Azure Static Web Apps ID. |
 | identity\_principal\_id | Azure Static Web Apps system identity principal ID. |
 | module\_diagnostics | Diagnostics settings module outputs. |
 | name | Azure Static Web Apps name. |
 | resource | Azure Static Web Apps resource object. |
+| resource\_custom\_domains | Azure Static Web Apps custom domains. |
 <!-- END_TF_DOCS -->
 
 ## Related documentation
