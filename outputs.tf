@@ -1,6 +1,7 @@
 output "resource" {
   description = "Azure Static Web Apps resource object."
   value       = azurerm_static_web_app.main
+  sensitive   = true
 }
 
 output "id" {

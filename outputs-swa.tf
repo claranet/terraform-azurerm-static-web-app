@@ -11,5 +11,6 @@ output "default_hostname" {
 
 output "resource_custom_domains" {
   value       = azurerm_static_web_app_custom_domain.main
+  sensitive   = true
   description = "Azure Static Web Apps custom domains."
 }
